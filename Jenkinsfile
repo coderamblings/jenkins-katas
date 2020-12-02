@@ -72,6 +72,9 @@ pipeline {
     }
 
     stage('component tes') {
+    environment {
+          DOCKERCREDS = credentials('4ce4865e-a8ee-4b49-9586-d5c3c2335421') //use the credentials just created in this stage
+    }
     when { branch "master" }
         steps {
           sh 'echo "On master branch"'
