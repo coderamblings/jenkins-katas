@@ -4,6 +4,7 @@ pipeline {
     stage('clone down') {
       steps {
         sh 'echo "Hello, clone world!"'
+	stash includes: '.git', name: 'code'
       }
     }
 
