@@ -33,6 +33,7 @@ pipeline {
 	    unstash 'code'
             sh 'ci/build-app.sh'
             archiveArtifacts 'app/build/libs/'
+            stash(excludes: '.git', name: 'code')
           }
         }
 
