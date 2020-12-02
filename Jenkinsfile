@@ -56,7 +56,7 @@ pipeline {
 
       }
     }
-
+    stage('push docker app') {
     environment {
           DOCKERCREDS = credentials('4ce4865e-a8ee-4b49-9586-d5c3c2335421') //use the credentials just created in this stage
     }
@@ -66,7 +66,7 @@ pipeline {
           sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin' //login to docker hub with the credentials above
           sh 'ci/push-docker.sh'
     }
-
+    }
 
   }
 }
