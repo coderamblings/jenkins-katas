@@ -16,6 +16,9 @@ pipeline {
         }
 
         stage('Build app with gradle') {
+          options {
+          skipDefaultCheckout true
+          }   
           agent {
             docker {
               image 'gradle:jdk11'
@@ -23,6 +26,7 @@ pipeline {
 
           }
           steps {
+	    unstash(name: 'code', includes: '.git')
             sh 'ci/build-app.sh'
             archiveArtifacts 'app/build/libs/'
           }
