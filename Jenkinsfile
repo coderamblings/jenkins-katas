@@ -26,7 +26,7 @@ pipeline {
 
           }
           steps {
-	    unstash(name: 'code', includes: '.git')
+	    unstash 'code'
             sh 'ci/build-app.sh'
             archiveArtifacts 'app/build/libs/'
           }
